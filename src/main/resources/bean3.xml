@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car4" class="com.learn.bean.Car">
+        <property name="id" value="4"></property>
+        <property name="brand" value="宝马"></property>
+    </bean>
+    <bean id="p11" class="com.learn.bean.Person">
+        <property name="id" value="11"></property>
+        <property name="car" ref="car4"></property>
+        <property name="car.brand" value="奥迪"></property>
+    </bean>
+     <!--factory-method="createPerson1" 在加载personFactory类   调用静态方法-->
+    <bean id="p12" class="com.learn.factory.PersonFactory" factory-method="createPerson1"></bean>
+
+
+    <!--调用工厂类中的实例方法-->
+     <bean id="factory" class="com.learn.factory.PersonFactory"></bean>
+     <bean id="p13" factory-bean="factory" factory-method="createPerson2"></bean>
+
+
+    <bean id="p14" class="com.learn.factory.MyFactoryBean" abstract="true"></bean>
+
+
+     <!--parent="p14" p15 继承 p14-->
+    <bean id="p15" class="com.learn.bean.Person" parent="p14">
+        <property name="id" value="15"></property>
+        <property name="name" value="jerry"></property>
+    </bean>
+
+</beans>

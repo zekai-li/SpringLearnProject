@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--spring框架的核心配置文件-->
+
+    <!--bean 实体对象
+        id : 当前bean标签唯一标识  也可以理解成 对象的名字
+    -->
+    <bean id="p1" class="com.learn.bean.Person">
+         <!--给属性赋值    属性注入  使用的是set方法-->
+         <property name="id" value="1"></property>
+         <property name="name" value="tom"></property>
+         <property name="phone" value="122233"></property>
+         <property name="age" value="30"></property>
+    </bean>
+
+
+    <bean id="p2" class="com.learn.bean.Person">
+        <property name="id" value="2"></property>
+        <property name="name" value="tom"></property>
+        <property name="phone" value="122233"></property>
+        <property name="age" value="30"></property>
+    </bean>
+
+
+     <!--使用带参数的构造器方法赋值  使用 name属性-->
+    <bean id="p3" class="com.learn.bean.Person">
+       <!-- <property name="id" value="3"></property>
+        <property name="name" value="龙喜"></property>
+        <property name="phone" value="110"></property>
+        <property name="age" value="18"></property>-->
+
+        <constructor-arg name="id" value="3"></constructor-arg>
+        <constructor-arg name="name" value="龙喜"></constructor-arg>
+        <constructor-arg name="phone" value="110"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+
+
+
+    </bean>
+
+
+    <!--使用带参数的构造器方法赋值  使用  index属性-->
+    <bean id="p4" class="com.learn.bean.Person">
+        <constructor-arg index="0"  value="4"></constructor-arg>
+        <constructor-arg index="1" value="龙喜"></constructor-arg>
+        <constructor-arg index="2" value="110"></constructor-arg>
+        <constructor-arg index="3" value="18"></constructor-arg>
+    </bean>
+
+    <!--使用带参数的构造器方法赋值  使用  type属性-->
+    <bean id="p5" class="com.learn.bean.Person">
+        <constructor-arg index="0"  value="5" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg index="1" value="龙喜" type="java.lang.String"></constructor-arg>
+        <constructor-arg index="2" value="110" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg index="3" value="18" type="java.lang.String"></constructor-arg>
+    </bean>
+
+
+    <bean id="p6" class="com.learn.bean.Person" p:id="6" p:name="龙喜6" p:phone="1111" p:age="20" ></bean>
+    <bean id="p7" class="com.learn.bean.Person">
+        <property name="id" value="7"></property>
+        <property name="name">
+            <null></null>
+        </property>
+    </bean>
+
+
+</beans>

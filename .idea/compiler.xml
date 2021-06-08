@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SpringLearn4" />
+        <module name="SpringLearn3" />
+        <module name="SpringLearn6" />
+        <module name="SpringLearn5" />
+        <module name="SpringLearn0" />
+        <module name="SpringLearn2" />
+        <module name="SpringLearn1" />
+        <module name="SpringLearn7" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpringLearn" target="1.8" />
+      <module name="SpringLearn0" target="1.8" />
+      <module name="SpringLearn1" target="1.8" />
+      <module name="SpringLearn2" target="1.8" />
+      <module name="SpringLearn3" target="1.8" />
+      <module name="SpringLearn4" target="1.8" />
+      <module name="SpringLearn5" target="1.8" />
+      <module name="SpringLearn6" target="1.8" />
+      <module name="SpringLearn7" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

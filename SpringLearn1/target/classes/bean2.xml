@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car" class="com.learn.bean.Car">
+         <!--字面量 当前类中的普通属性-->
+        <property name="id" value="#{1}"></property>
+        <property name="brand" value="#{'大众'}"></property>
+    </bean>
+
+    <bean id="person" class="com.learn.bean.Person">
+         <property name="id" value="1"></property>
+         <property name="name" value="tom"></property>
+      <!--   <property name="salary" value="#{20000*14}"></property>-->
+       <!-- <property name="salary" value="#{car.getPrice2()}"></property>-->
+     <!--   <property name="salary" value="#{T(com.atguigu.bean.Car).getPrice()}"></property>-->
+        <property name="salary" value="#{car.getPrice()}"></property>
+
+        <property name="car"  value="#{car}" ></property>
+    </bean>
+
+
+
+</beans>

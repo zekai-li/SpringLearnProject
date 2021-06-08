@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--扫描的(过滤)的规则
+  只扫描dao,service,排除 controller
+-->
+    <!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--
+       在使用include引用时 默认 use-default-filters="true" 基础包下的所有的注解全部扫描
+       如果只让当前的扫描按照指定的规则执行必须use-default-filters="false"
+
+    -->
+    <!--
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    -->
+    <!--
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--
+
+        <context:include-filter type="assignable" expression="com.atguigu.controller.BaseController"/>
+    -->
+
+    <context:component-scan base-package="com.learn" use-default-filters="true">
+        <context:exclude-filter type="regex"
+                                expression="com.learn.xml.*" />
+
+    </context:component-scan>
+
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+    </bean>
+
+    <!--封装jdbc代码的模板 JdbcTemplate 等价于DBUtil-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg index="0" ref="dataSource"></constructor-arg>
+    </bean>
+    <!--声明式事务-->
+    <!--1.注册 DataSourceTransActionManager 事务管理器作用: 管理事务的特性-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--2. 开启注解事务的支持-->
+    <!--     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
+
+    <!--编写通知的规则-->
+    <tx:advice id="methodAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="updateUserBook" propagation="REQUIRED" isolation="REPEATABLE_READ" read-only="false"/>
+
+            <!--update 修改的方法匹配规则 update*-->
+            <tx:method name="update*" propagation="REQUIRED" isolation="REPEATABLE_READ" read-only="false"></tx:method>
+            <!-- save 添加的方法匹配规则 save*-->
+            <tx:method name="save*" propagation="REQUIRED" isolation="REPEATABLE_READ" read-only="false"></tx:method>
+            <!--insert* 添加-->
+            <tx:method name="insert*" propagation="REQUIRED" isolation="REPEATABLE_READ" read-only="false"></tx:method>
+            <!--del*-->
+            <tx:method name="del*" read-only="false"></tx:method>
+            <!--查询-->
+            <tx:method name="query*" read-only="true"></tx:method>
+            <tx:method name="select*" read-only="true"></tx:method>
+            <!--如果以上的规则都没有匹配成功-->
+            <tx:method name="*"></tx:method>
+        </tx:attributes>
+
+    </tx:advice>
+
+
+    <!--     <aop:config>-->
+    <!--          <aop:pointcut id="cut" expression="execution(* com.learn.xml.service.*.*(..))"/>-->
+    <!--          <aop:advisor advice-ref="methodAdvice" pointcut-ref="cut"></aop:advisor>-->
+    <!--     </aop:config>-->
+
+
+</beans>

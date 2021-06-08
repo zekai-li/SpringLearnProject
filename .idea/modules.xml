@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn.iml" filepath="$PROJECT_DIR$/SpringLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn0/SpringLearn0.iml" filepath="$PROJECT_DIR$/SpringLearn0/SpringLearn0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn1/SpringLearn1.iml" filepath="$PROJECT_DIR$/SpringLearn1/SpringLearn1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn2/SpringLearn2.iml" filepath="$PROJECT_DIR$/SpringLearn2/SpringLearn2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn3/SpringLearn3.iml" filepath="$PROJECT_DIR$/SpringLearn3/SpringLearn3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn4/SpringLearn4.iml" filepath="$PROJECT_DIR$/SpringLearn4/SpringLearn4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn5/SpringLearn5.iml" filepath="$PROJECT_DIR$/SpringLearn5/SpringLearn5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn6/SpringLearn6.iml" filepath="$PROJECT_DIR$/SpringLearn6/SpringLearn6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringLearn7/SpringLearn7.iml" filepath="$PROJECT_DIR$/SpringLearn7/SpringLearn7.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--  <bean id="a" class="com.learn.bean.A" depends-on="b"></bean>
+    <bean id="b" class="com.learn.bean.B" depends-on="c"></bean>
+    <bean id="c" class="com.learn.bean.C" ></bean>-->
+
+     <!--
+         在spring容器中管理的bean对象默认是单例的  singleton
+          单例( 不管获取几次bean对象 永远只创建(new)一次)
+          在容器创建之后立马创建bean对象
+
+
+
+          prototype 多例  (获取几次bean对象 就new几个对象)
+          默认不会创建对象
+
+     -->
+  <!--  <bean id="a" class="com.learn.bean.A" scope="prototype"></bean>
+
+    <bean id="car6" class="com.learn.bean.Car" p:id="6" p:brand="大众"></bean>
+    <bean id="car7" class="com.learn.bean.Car" p:id="6" p:brand="大众"></bean>-->
+    <!--自动注入 自动装配
+    autowire="byName"  通过比较当前容器中bean的id值和当前bean实例 中属性的名字 如果一致 那就自动注入,如果没有匹配到以null代替(不报错)
+   autowire="byType"  通过比较当前容器中bean对象的类型和当前实例中属性的类型 如果一致 自动注入 如果匹配多个 报错
+
+    推荐使用： 注解的形式实现自动注入
+    -->
+<!--    <bean id="p16" class="com.learn.bean.Person" autowire="byName">
+          <property name="id" value="16"></property>
+          <property name="name" value="smith"></property>
+          <property name="phone" value="16666"></property>
+        &lt;!&ndash;  <property name="car" ref="car6"></property>&ndash;&gt;
+    </bean>-->
+
+
+
+    <bean id="p17" class="com.learn.bean.Person" init-method="init" destroy-method="destroy" >
+        <property name="id" value="17"></property>
+        <property name="name" value="smiths"></property>
+        <property name="phone" value="16666"></property>
+    </bean>
+    <!--在spring容器中注册后置处理器-->
+    <bean class="com.learn.factory.MyBeanPostProcessor"></bean>
+
+
+
+</beans>

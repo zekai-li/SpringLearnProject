@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<context:component-scan base-package="com.learn" use-default-filters="true">
+  <!--扫描的(过滤)的规则
+    只扫描dao,service,排除 controller
+  -->
+  <!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--
+       在使用include引用时 默认 use-default-filters="true" 基础包下的所有的注解全部扫描
+       如果只让当前的扫描按照指定的规则执行必须use-default-filters="false"
+    
+    -->
+<!--
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+-->
+    <!--
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--
+
+    <context:include-filter type="assignable" expression="com.atguigu.controller.BaseController"/>
+-->
+
+
+</context:component-scan>
+
+
+</beans>

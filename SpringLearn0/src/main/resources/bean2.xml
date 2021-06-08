@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <bean id="car1" class="com.learn.bean.Car">
+        <property name="id" value="1"></property>
+        <property name="brand" value="捷达"></property>
+   </bean>
+
+    <bean id="p8" class="com.learn.bean.Person">
+        <property name="id" value="8"></property>
+        <property name="name" value="燕鑫"></property>
+        <property name="age" value="38"></property>
+        <property name="phone" value="438"></property>
+        <!--ref 引用外部bean对象 给person中的子对象赋值-->
+        <property name="car"  ref="car1"></property>
+   </bean>
+
+
+    <bean id="p9" class="com.learn.bean.Person">
+        <property name="id" value="9"></property>
+        <property name="name" value="燕鑫"></property>
+        <property name="age" value="48"></property>
+        <property name="phone" value="438"></property>
+        <!-- 给car内部 bean对象 赋值  缺点: 不能被外部的其他bean对象使用-->
+        <property name="car">
+            <bean  class="com.learn.bean.Car">
+                  <property name="id" value="2"></property>
+                  <property name="brand" value="五菱宏光"></property>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
